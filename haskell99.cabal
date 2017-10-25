@@ -30,6 +30,7 @@ executable haskell99-exe
 test-suite haskell99-test
   type:                exitcode-stdio-1.0
   hs-source-dirs:      test
+  other-modules:       ListsSpec
   main-is:             Spec.hs
   build-depends:       base
                      , haskell99
