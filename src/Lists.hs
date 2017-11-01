@@ -3,7 +3,10 @@ module Lists
       myButLast,
       elementAt,
       myLength,
-      myReverse
+      myReverse,
+      isPalindrome,
+      NestedList(List, Elem),
+      flatten
     ) where
 
 myLast :: [a] -> a
@@ -30,3 +33,12 @@ myReverse :: [a] -> [a]
 myReverse [] = []
 --myReverse (x:xs) = (myReverse xs) ++ [x]
 myReverse xs = last xs:myReverse (init xs)
+
+isPalindrome :: Eq a => [a] -> Bool
+isPalindrome xs = xs == reverse xs
+
+data NestedList a = Elem a | List [NestedList a] deriving (Show)
+flatten :: NestedList a -> [a]
+flatten (Elem element) = [element]
+flatten (List []) = []
+flatten (List (x:xs)) = flatten x ++ flatten (List xs)

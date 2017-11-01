@@ -45,3 +45,15 @@ spec = do
     it "returns an inverted list" $ do
       myReverse "A man, a plan, a canal, panama!" `shouldBe` "!amanap ,lanac a ,nalp a ,nam A"
       myReverse [1,2,3,4] `shouldBe` [4,3,2,1]
+
+  describe "isPalindrome" $ do
+    it " finds out whether a list is a palindrome" $ do
+      isPalindrome "madamimadam" `shouldBe` True
+      isPalindrome [1,2,4,8,16,8,4,2,1] `shouldBe` True
+      isPalindrome [1] `shouldBe` True
+
+  describe "flatten" $ do
+    it "flattens a nested list of elements" $ do
+      (flatten (List [])::[Int]) `shouldBe` []
+      (flatten (List [Elem 1])) `shouldBe` [1]
+      (flatten (List [Elem 1, List [Elem 2]])) `shouldBe` [1, 2]
