@@ -47,7 +47,7 @@ spec = do
       myReverse [1,2,3,4] `shouldBe` [4,3,2,1]
 
   describe "isPalindrome" $ do
-    it " finds out whether a list is a palindrome" $ do
+    it "finds out whether a list is a palindrome" $ do
       isPalindrome "madamimadam" `shouldBe` True
       isPalindrome [1,2,4,8,16,8,4,2,1] `shouldBe` True
       isPalindrome [1] `shouldBe` True
@@ -57,3 +57,9 @@ spec = do
       (flatten (List [])::[Int]) `shouldBe` []
       (flatten (List [Elem 1])) `shouldBe` [1]
       (flatten (List [Elem 1, List [Elem 2]])) `shouldBe` [1, 2]
+
+  describe "compress" $ do
+    it "eliminates consecutive duplicates of list elements" $ do
+      compress ([]::[Int]) `shouldBe` []
+      compress [1] `shouldBe` [1]
+      compress "aaaabccaadeeee" `shouldBe` "abcade"

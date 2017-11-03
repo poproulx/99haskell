@@ -6,7 +6,8 @@ module Lists
       myReverse,
       isPalindrome,
       NestedList(List, Elem),
-      flatten
+      flatten,
+      compress
     ) where
 
 myLast :: [a] -> a
@@ -42,3 +43,10 @@ flatten :: NestedList a -> [a]
 flatten (Elem element) = [element]
 flatten (List []) = []
 flatten (List (x:xs)) = flatten x ++ flatten (List xs)
+
+compress ::Eq a => [a] -> [a]
+compress [] = []
+compress [x] = [x]
+compress (x:xs)
+  | x == head xs = compress xs
+  | otherwise = x:compress xs
