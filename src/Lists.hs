@@ -7,8 +7,11 @@ module Lists
       isPalindrome,
       NestedList(List, Elem),
       flatten,
-      compress
+      compress,
+      pack
     ) where
+
+import Data.List (span)
 
 myLast :: [a] -> a
 myLast [] = error "empty list"
@@ -50,3 +53,8 @@ compress [x] = [x]
 compress (x:xs)
   | x == head xs = compress xs
   | otherwise = x:compress xs
+
+pack :: Eq a => [a] -> [[a]]
+pack [] = []
+pack (x:xs) = [fst $ groupFirstElements] ++ pack ( snd $ groupFirstElements)
+  where groupFirstElements = span (==x) (x:xs)

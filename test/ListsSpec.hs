@@ -63,3 +63,7 @@ spec = do
       compress ([]::[Int]) `shouldBe` []
       compress [1] `shouldBe` [1]
       compress "aaaabccaadeeee" `shouldBe` "abcade"
+
+  describe "pack" $ do
+    it "Pack consecutive duplicates of list elements into sublists" $ do
+      pack ['a', 'a', 'a', 'a', 'b', 'c', 'c', 'a', 'a', 'd', 'e', 'e', 'e', 'e'] `shouldBe` ["aaaa","b","cc","aa","d","eeee"]
