@@ -8,10 +8,11 @@ module Lists
       NestedList(List, Elem),
       flatten,
       compress,
-      pack
+      pack,
+      encode
     ) where
 
-import Data.List (span)
+import Data.List (span, map)
 
 myLast :: [a] -> a
 myLast [] = error "empty list"
@@ -58,3 +59,8 @@ pack :: Eq a => [a] -> [[a]]
 pack [] = []
 pack (x:xs) = [fst $ groupFirstElements] ++ pack ( snd $ groupFirstElements)
   where groupFirstElements = span (==x) (x:xs)
+
+encode :: Eq a => [a] ->[(Int, a)]
+encode [] = []
+encode x = map compress . pack $ x
+  where compress y = (length y, head y)
